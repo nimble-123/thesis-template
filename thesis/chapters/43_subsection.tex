@@ -1,0 +1,48 @@
+\subsection{Abbildungen, Tabellen und Listings}
+Bei der Erstellung von Abbildungen ist darauf zu achten, dass die erzeugten Grafiken selbstähnlich seien müssen, d. h. Größe, Schriftart, Schattierung, Linienart und -stärke, sowie die Art der Pfeilspitzen müssen in allen Grafiken gleich gewählt werden. Die serifenlose Schriftart Arial sollte in jedem Fall benutzt werden. Dabei sollte jedoch beachtet werden, dass auf Schatten, 3D-Effekte  und Füllbereich zunächst zu verzichten ist. Sie dienen als Hervorhebung in einigen wenigen Grafiken; der Großteil der verwendeten Grafiken enthält diese Hervorhebungen nicht.
+
+Bei der Verwendung von perspektivischen Elementen wie Schatten oder 3D-Effekt ist zu beachten, dass die Perspektive in allen Zeichnungen gleich sein sollte (z. B. Parallelperspektive nach rechts unten).
+
+Erklärende Texte sind so weit wie möglich in Text einzugeben (z. B. die Quellenangabe).
+
+\subsubsection{Einfügen von Abbildungen}
+Abbildungen werden in \LaTeX{} über die Umgebung $\backslash$begin\{figure\} eingefügt.
+
+\begin{lstlisting}[caption={Quelltext für eine Abbildung},label=lst:source-code-listing]
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\linewidth]{pictures/filename_without_extension}
+  \caption[Verzeichnis Beschreibung]{Bildunterschrift im Text}
+  \label{fig:filename_without_extension}
+\end{figure}
+\end{lstlisting}
+
+\subsubsection{Einfügen von Tabellen}
+Abbildungen werden in \LaTeX{} über die Umgebung $\backslash$begin\{tabularx\} eingefügt.
+
+\begin{lstlisting}[caption={Quelltext für eine Tabelle},label=lst:source-code-table]
+\begin{table}[]
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}ll@{}}
+      \toprule
+      \textbf{Key} & \textbf{Value} \\ \midrule
+      \multicolumn{1}{r}{key} & value \\ \bottomrule
+    \end{tabular}%
+  }
+  \caption{Funktionale Anforderungen}
+  \label{tab:functional-requirements}
+\end{table}
+\end{lstlisting}
+
+Die Website \url{https://www.tablesgenerator.com/} empfiehlt sich zum Erzeugen von Tabellen.
+
+\subsubsection{Einfügen von Listings}
+Abbildungen werden in \LaTeX{} über die Umgebung $\backslash$begin\{lstlisting\} eingefügt. Es ist zu beachten, dass in Listing \ref{lst:source-code-listing} bewusst jede Zeile als Kommentar (Zeilenbeginn mit \%) abgebildet ist, da \LaTeX{} keine Listingdefinition als eigenes Listing zulässt.
+
+\begin{lstlisting}[caption={Quelltext für ein Listing},label=lst:source-code-listing]
+%\begin{lstlisting}
+%  public static void main(args[]) {
+%    System.out.println("Hello World!");  
+%  }
+%\end {lstlisting}
+\end{lstlisting}

@@ -1,0 +1,147 @@
+%% Created by M.Sc. Nils Lutz
+%%    For questions, comments, suggestions etc. send an email to:
+%%    info@nilslutz.de
+%%
+%% Version: September 17, 2019
+%%
+%% Note: Has only been tested with pdflatex, not latex (dvi). Still, there is
+%% theoretical support also for latex.
+%%
+\documentclass[enabledeprecatedfontcommands,12pt,bibtotoc]{scrartcl}
+
+%% packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}       % Standard for Linux
+\usepackage{lmodern}
+%\usepackage[latin1]{inputenc}    % Standard for Windows
+\usepackage{ngerman}              % For German language
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{ifpdf}
+\usepackage{setspace}             % For line spread
+\usepackage[printonlyused, withpage, smaller]{acronym}
+\usepackage[authoryear, round, sort]{natbib}
+\usepackage{csquotes}
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{lscape}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{color}
+\usepackage{float}
+\usepackage{nicefrac}
+\usepackage{listings} %For code in appendix
+\usepackage{textcomp} % for upquote
+\usepackage{blindtext}
+
+\lstset
+{ %Formatting for code in appendix
+  backgroundcolor=\color{white},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  columns=fullflexible,
+  commentstyle=\color{mediumgray}\upshape,
+  emph={},
+  emphstyle=\color{crimson},
+  extendedchars=true,  % requires inputenc
+  fontadjust=true,
+  identifierstyle=\color{black},
+  keepspaces=true,
+  keywordstyle=\color{mediumblue},
+  keywordstyle={[2]\color{darkviolet}},
+  keywordstyle={[3]\color{royalblue}},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showlines=true,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stringstyle=\color{forestgreen},
+  tabsize=1,
+  title=\lstname,
+  upquote=true  % requires textcomp
+}
+
+% For pdflatex
+\ifpdf
+  % One of these two:
+  \usepackage[pdftex]{graphicx}
+  %\usepackage[pdftex]{epsfig}
+
+  \usepackage[pdftex]{hyperref}
+% For latex (dvi)
+\else
+  % One of these two:
+  \usepackage[dvips]{graphicx}
+  %\usepackage[dvips]{epsfig}
+
+  % make the command \href from hyperref available as a 'print only'
+  \newcommand{\href}[2]{#2}
+\fi
+
+%% Picture options
+\graphicspath{{pictures/}}         % Default path to pictures used
+\DeclareGraphicsExtensions{.png}   % More extensions can be added
+
+% Hyper ref coloring
+\hypersetup{colorlinks, citecolor=black, linkcolor= black, urlcolor=black}
+
+%% Pagestyle options
+\pagestyle{fancy}
+%\lhead{}
+%\chead{}
+%\rhead{}
+%\lfoot{Daniel Süpke}
+%\cfoot{}
+%\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\geometry{a4paper,left=3cm,right=3cm}
+%\geometry{a4paper,left=3cm,right=2.5cm}   % Please use these settings for a PhD-thesis
+
+%% Document start
+\begin{document}
+
+\pagenumbering{Roman}
+
+% Insert titlepage
+\input{chapters/00_titlepage}
+
+% Insert table of contents
+\input{chapters/10_tableofcontents}
+
+% Insert glossary, table of symbols, list of figures and list of tables
+\input{chapters/20_lists}
+
+\pagenumbering{arabic}
+
+%% Line spread
+\onehalfspacing
+
+% Insert introduction
+\input{chapters/30_introduction}
+
+% Insert body
+\input{chapters/40_main}
+
+% Insert conclusion
+\input{chapters/50_conlusion}
+
+%\pagenumbering{Roman}
+%\setcounter{page}{7}
+
+% Insert bibliography
+\input{chapters/60_bibliography}
+
+% Insert appendix
+\input{chapters/70_appendix}
+
+% Insert declaration
+\input{chapters/80_declaration}
+
+\end{document}
